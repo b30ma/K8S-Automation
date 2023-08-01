@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: lambda-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: lambda
+  template:
+    metadata:
+      labels:
+        app: lambda
+    spec:
+      containers:
+        - name: lambda-container
+          image: your-lambda-image:latest
+          ports:
+            - containerPort: 8080
